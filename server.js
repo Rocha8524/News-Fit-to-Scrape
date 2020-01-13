@@ -2,8 +2,10 @@
 var express = require("express");
 var mongojs = require("mongojs");
 var axios = require("axios");
+var mongoose = require("mongoose");
 var cheerio = require("cheerio");
-var exphbs = require('express-handlebars');
+var exphbs = require("express-handlebars");
+var morgan = require("morgan")
 
 // Initialize Express
 var app = express();
