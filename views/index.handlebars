@@ -1,61 +1,65 @@
-<header class="header">
-  <h1 id="neon">[ WEB-SCRAPER ]</h1>
-  <nav class="button-group">
-    <button class="button-dark" id="scrape" data-toggle="modal">Scrape New Articles</button>
-    <a href="/articles/viewSaved"><button class="button-dark" id="viewSaved">View Saved Articles</button></a>
-  </nav>
-</header>
-<div class="filler"></div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Mongo Scraper</a>
+    </div>
 
-{{#each articles}}
-  {{#unless saved}}
-    <figure class="storyPanel clearfix">
-      <a href="{{storyUrl}}" class="pull-right" target="_blank">
-        <div class="imgBox">
-          <img src="{{imgUrl}}" alt="" class="storyImg" height="150">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="/savedarticles">Saved Articles</a></li>
+      </ul>
+      <form action="/scrape" method="POST" class="navbar-form navbar-left">
+        <button type="submit" class="btn btn-default">SCRAPE NEW ARTICLES!</button>
+
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!--End navigation-->
+
+<!-- Main container -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+      </div>
+      <div><a href="https://github.com/llandicho/MongoDB-News-Scraper">Git Repo</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {{#each articles}}
+        <div class="panel panel-primary">
+          <div class="panel-heading row">
+            <div class="col-xs-9">
+              <h3 class="panel-title pull-left">{{this.title}}</h3>
+            </div>
+            <div class="col-xs-3">
+              <form action="/save" method="POST">
+                <input id="article-title" type="hidden" name="title" value="{{this.title}}">
+                <input id="article-link" type="hidden" name="link" value={{this.link}}>
+                <button type="submit" class="btn btn-default pull-right">SAVE ARTICLE</button>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12>">
+              <div class="panel-body">
+                <p>{{this.link}}</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </a>
-      {{#if storyUrl}}
-        <a href="{{storyUrl}}" class="storyLink" target="_blank">
-          <h2 class="storyHeadline">{{headline}}</h2>
-        </a>
-      {{else}}
-        <h3 class="storyHeadline">{{headline}}</h3>
-      {{/if}}
-      <h5 class="storyByline">{{byLine}}</h5>
-      <h6 class="storySummary">{{summary}}</h6>
-      <button class="storyButton" id="saveArticle" data-id="{{_id}}">Save Article</button>
-    </figure>
-  {{/unless}}
-{{/each}}
-
-{{!-- Modal for alerting number of scraped articles --}}
-<div id="alertModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body text-center">
-        <h2>You have scraped <span id="numArticles"></span> new articles</h2>
-      </div>
+      {{/each}}
     </div>
   </div>
 </div>
-
-{{!-- error modal --}}
-<div id="error" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-md">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <h2>There was an error processing your request.  Please try again later.</h2>
-      </div>
-    </div>
-  </div>
-</div>
-
-{{!-- Loader --}}
-<div id="loader">Loading...</div>
