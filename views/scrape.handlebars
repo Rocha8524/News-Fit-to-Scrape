@@ -18,9 +18,9 @@
                 <hr>
                 <button data-id={{@index}} class="save-article" style="padding: 5px 10px; float:right">Save</button>
                 <h4 id="title-{{@index}}"><strong>{{this.title}}</strong></h4>
-                <a href="{{this.link}}" id="link-{{@index}}">{{this.link}}</a>
-                {{#if this.excerpt}}
-                <h5 id="excerpt-{{@index}}">{{this.excerpt}}</h5>
+                <a href="{{this.storyUrl}}" id="link-{{@index}}">{{this.storyUrl}}</a>
+                {{#if this.summary}}
+                <h5 id="excerpt-{{@index}}">{{this.summary}}</h5>
                 {{/if}}
                 {{!-- <button data-id={{@index}} class="save-article" style="padding: 5px 10px; float:right">Save</button>   --}}
                 <hr>

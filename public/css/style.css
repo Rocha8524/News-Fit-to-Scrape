@@ -1,8 +1,8 @@
 body { 
-    background-image: url(images/universe.jpg); 
+    background-image: url(https://storage.googleapis.com/afs-prod/media/media:6ca4c6d1ac81433191989939b4131e03/3000.jpeg); 
     background-size: 100% auto; 
     background-size: cover;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     display: -webkit-box;
     margin: auto;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -51,7 +51,6 @@ textarea {
     width: 400px;
     height: 400px;
     background-repeat: no-repeat, repeat;
-    background-image: url(images/logo.jpg), url(images/universe.jpg);
     background-blend-mode: lighten;
 }
 a
