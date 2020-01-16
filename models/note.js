@@ -5,10 +5,10 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var NoteSchema = new Schema({
-  
+
   // Title is of type String
   title: String,
-  
+
   // Body is of type String
   body: String
 });
